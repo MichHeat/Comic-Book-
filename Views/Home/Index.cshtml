@@ -1,0 +1,183 @@
+﻿@{
+    ViewBag.Title = "Index";
+}
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Dela+Gothic+One&family=Lato:wght@700;900&family=Roboto&display=swap">
+<main>
+    <style>
+
+ header {
+  color: #2F4F4F;
+  background-image: url(https://cutewallpaper.org/27x/4uelpa9h7/104968193.jpg);
+  background-attachment: fixed;
+  padding: 20px;
+  position: relative;
+  top: 0;
+  left: 0;
+  width: 100%;
+  padding-bottom: 1px;
+  align-items: center;
+  justify-content: center;
+  z-index: 1;
+}
+        header h1 {
+            color: #2F4F4F;
+            font-size: 50px;
+            font-family: "Gill Sans", sans-serif;
+            text-align: center;
+        }
+
+
+* {
+  margin: 0;
+  padding: 0;
+}
+
+.panels {
+  min-height: 100vh;
+  width: 100%;
+  overflow: hidden;
+  display: flex;
+  margin-top: 1px;
+}
+
+.panel {
+  background: #6B0F9C;
+  box-shadow: inset 0 0 0 5px rgba(255,255,255,0.1);
+  color: honeydew;
+  text-align: center;
+  align-items: center;
+  /* Safari transitionend event.propertyName === flex */
+  /* Chrome + FF transitionend event.propertyName === flex-grow */
+  transition:
+    font-size 0.7s cubic-bezier(0.61,-0.19, 0.7,-0.11),
+    flex 0.7s cubic-bezier(0.61,-0.19, 0.7,-0.11),
+    background 0.2s;
+  font-size: 20px;
+  background-size: cover;
+  background-position: center;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+}
+
+.panel1 { background-image:url(https://w0.peakpx.com/wallpaper/561/505/HD-wallpaper-superman-dc-comics.jpg); }
+.panel2 { background-image:url(https://w0.peakpx.com/wallpaper/417/876/HD-wallpaper-hulk-angry-avengers-marvel-smash.jpg); }
+.panel3 { background-image:url(https://wallpapershome.com/images/pages/pic_h/18562.jpg); }
+.panel4 { background-image:url(https://w0.peakpx.com/wallpaper/978/478/HD-wallpaper-batman-comics-dc-superheros.jpg); }
+.panel5 { background-image:url(https://e0.pxfuel.com/wallpapers/818/424/desktop-wallpaper-flash-dc-comics.jpg); }
+
+
+/* Flex Children */
+.panel > * {
+  margin: 0;
+  width: 100%;
+  transition: transform 0.5s;
+  flex: 1 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+.panel p {
+  text-transform: uppercase;
+  font-family: 'Roboto';
+  text-shadow: 0 0 4px rgba(0, 0, 0, 0.08), 0 0 14px rgba(0, 0, 0, 0.45);
+  font-size: 2em;
+}
+
+/* First text element */
+.panel p:nth-child(1) {
+  transform: translateY(-100%);
+}
+
+.panel.open-active p:nth-child(1) {
+  transform: translateY(0);
+}
+
+/* Second text element - main text */
+.panel p:nth-child(2) {
+  font-size: 4em;
+  font-family: 'Lato', sans-serif;
+  padding: 8px;
+}
+
+/* Third text element */
+.panel p:nth-child(3) {
+  transform: translateY(100%);
+}
+
+.panel.open-active p:nth-child(3) {
+  transform: translateY(0);
+}
+
+.panel.open {
+  flex: 3;
+  font-size: 30px;
+}
+
+ </style>
+
+
+    <body>
+        <header>
+            <h1>Comic books</h1>
+
+        </header>
+
+
+        <div class="panels">
+            <div class="panel panel1">
+                <p>a Place</p>
+                <p>Where</p>
+                <p>you use imagination</p>
+            </div>
+            <div class="panel panel2">
+                <p>Get your</p>
+                <p>Heroes</p>
+                <p>fix here</p>
+            </div>
+            <div class="panel panel3">
+                <p>Heroes</p>
+                <p>Come</p>
+                <p>in paper</p>
+            </div>
+            <div class="panel panel4">
+                <p>Journey</p>
+                <p>To</p>
+                <p>other Worlds</p>
+            </div>
+            <div class="panel panel5">
+                <p>Making</p>
+                <p>Life</p>
+                <p>Fun</p>
+            </div>
+        </div>
+
+
+        <script>
+            const panels = document.querySelectorAll(".panel");
+
+            function panelOpen() {
+                this.classList.toggle('open');
+            }
+
+            function toggleActive(e) {
+                console.log(e.propertyName)
+                if (e.propertyName.includes('flex')) {
+                    this.classList.toggle('open-active');
+                }
+            }
+
+            panels.forEach(panel => panel.addEventListener('click', panelOpen));
+
+            panels.forEach(panel => panel.addEventListener('transitionend', toggleActive));
+        </script>
+
+    </body>
+    
+</main>
